@@ -1,4 +1,4 @@
-<div class="stepper" [ngClass]="color">
+<div class="stepper" [ngClass]="[color, direction]">
     <ng-container *ngFor="let step of steps; let i = index; let first = first; let last = last">
         <div class="step" [ngClass]="step.status" [class.first]="first" [class.last]="last">
             <div class="step-label">

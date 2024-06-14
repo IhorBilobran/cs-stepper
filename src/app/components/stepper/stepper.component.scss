@@ -1,7 +1,11 @@
+
 .stepper {
+    --step-max-width: 280px;
+
     display: flex;
     padding: 20px;
 
+    // color
     &.primary {
         --stepper-color: var(--primary);        
     }
@@ -9,26 +13,81 @@
     &.secondary {
         --stepper-color: var(--secondary);   
     }
+
+    // direction
+    &.horizontal {
+        flex-direction: row;
+
+        .step {
+            &.first {
+                .step-bar {
+                    border-radius: 37px 0 0 37px;
+                }
+            }
+        
+            &.last {
+                .step-bar {
+                    border-radius: 0 37px 37px 0;
+                }
+            }
+
+            &.active {
+                .step-bar {
+                    border-top-right-radius: 37px;
+                    border-bottom-right-radius: 37px;
+                }
+            }
+        }
+    }
+    
+    &.vertical {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .step {
+            width: auto;
+            flex-direction: row-reverse;
+
+            &-label {
+                margin-bottom: 0;
+                margin-left: 12px;
+            }
+
+            &-bar {
+                bottom: 0px;
+                left: 12px;
+                width: 4px;
+                height: var(--step-max-width);
+            }
+
+            &.first {
+                .step-bar {
+                    border-radius: 37px 37px 0 0;
+                }
+            }
+        
+            &.last {
+                .step-bar {
+                    border-radius: 0 0 37px 37px;
+                }
+            }
+            
+            &.active {
+                .step-bar {
+                    border-bottom-right-radius: 37px;
+                    border-bottom-left-radius: 37px;
+                }
+            }
+        }
+    }
 }
 
 .step {
-    width: 280px;
+    width: var(--step-max-width);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-
-    &.first {
-        .step-bar {
-            border-radius: 37px 0 0 37px;
-        }
-    }
-
-    &.last {
-        .step-bar {
-            border-radius: 0 37px 37px 0;
-        }
-    }
 
     &-label {
         color: var(--light-gray);
@@ -52,7 +111,6 @@
             width: 100%;
             height: 100%;
             background: url('/assets/icons/checkmark.svg') no-repeat center;
-            margin-top: 1px;
         }
     }
 
@@ -72,8 +130,6 @@
         .step-bar {
             background-color: var(--stepper-color);        
             transition: background-color .4s ease-in;
-            border-top-right-radius: 37px;
-            border-bottom-right-radius: 37px;
         }
 
         .step-number {

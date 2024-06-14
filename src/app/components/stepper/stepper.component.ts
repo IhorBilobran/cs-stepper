@@ -10,7 +10,7 @@ import { Step, StepStatus, StepperColor, StepperDirection } from 'src/app/model/
 export class StepperComponent {
   @Input() steps: Step[] = [];
   @Input() currentStep: Step;
-  @Input() direction?: StepperDirection = StepperDirection.HORIZONTAL;
+  @Input() direction?: StepperDirection = 'horizontal';
   @Input() color?: StepperColor = 'primary';
 
   public stepStatusEnum = StepStatus;

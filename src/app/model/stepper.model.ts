@@ -9,9 +9,5 @@ export enum StepStatus {
     DISABLED = 'disabled'
 }
 
-export enum StepperDirection {
-    HORIZONTAL = 'horizontal',
-    VERTICAL = 'vertical'
-}
-
+export type StepperDirection = 'horizontal' | 'vertical';
 export type StepperColor = 'primary' | 'secondary';
