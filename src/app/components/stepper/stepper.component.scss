@@ -1,0 +1,114 @@
+.stepper {
+    display: flex;
+    padding: 20px;
+
+    &.primary {
+        --stepper-color: var(--primary);        
+    }
+    
+    &.secondary {
+        --stepper-color: var(--secondary);   
+    }
+}
+
+.step {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    &.first {
+        .step-bar {
+            border-radius: 37px 0 0 37px;
+        }
+    }
+
+    &.last {
+        .step-bar {
+            border-radius: 0 37px 37px 0;
+        }
+    }
+
+    &-label {
+        color: var(--light-gray);
+        font-weight: 400;
+        margin-bottom: 12px;
+        line-height: 22px;
+    }
+
+    &-number {
+        z-index: 10;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.02em;
+
+        .checkmark {
+            width: 100%;
+            height: 100%;
+            background: url('/assets/icons/checkmark.svg') no-repeat center;
+            margin-top: 1px;
+        }
+    }
+
+    &-bar {
+        z-index: 1;
+        width: 100%;
+        height: 4px;
+        position: relative;
+        bottom: 11px;
+    }
+
+    &.active {
+        .step-label {
+            color: var(--text-white);
+        }
+
+        .step-bar {
+            background-color: var(--stepper-color);        
+            transition: background-color .4s ease-in;
+            border-top-right-radius: 37px;
+            border-bottom-right-radius: 37px;
+        }
+
+        .step-number {
+            transition: background-color .4s ease-in;
+            background: var(--stepper-color);
+            color: var(--text-dark);
+        }
+    }
+
+    &.disabled {
+        .step-number {
+            background: var(--dark-gray);
+            outline: 1px solid #383838;
+        }
+
+    }
+
+    &.completed {
+        .step-bar {
+            background-color: var(--dark-gray);
+        }
+
+        .step-number {
+            background: var(--dark-gray);
+            box-shadow: 8px 0px 20px 0px rgba(8, 8, 8, 0.45);
+        }
+    }
+}
+
+button.next {
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--text-dark);
+    border: none;
+    margin-top: 1rem;
+    padding: 2px 15px;
+    border-radius: 12px;
+}

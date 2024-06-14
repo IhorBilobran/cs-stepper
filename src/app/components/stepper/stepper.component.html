@@ -1,0 +1,18 @@
+<div class="stepper" [ngClass]="color">
+    <ng-container *ngFor="let step of steps; let i = index; let first = first; let last = last">
+        <div class="step" [ngClass]="step.status" [class.first]="first" [class.last]="last">
+            <div class="step-label">
+                {{step.label}}
+            </div>
+            <div class="step-number">
+                <span *ngIf="step.status !== stepStatusEnum.COMPLETED">{{i + 1}}</span>
+                <div *ngIf="step.status === stepStatusEnum.COMPLETED" class="checkmark"></div>
+            </div>
+            <div class="step-bar"></div>
+        </div>
+    </ng-container>
+</div>
+
+<div>
+    <button class="next" (click)="next()">Next</button>
+</div>
